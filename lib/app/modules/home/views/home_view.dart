@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sales/widgets/bottom_navigator.dart';
+import 'package:sales/widgets/home_body.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -10,15 +12,40 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        backgroundColor: Color(0xFFE6212A),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.menu,
+                color: Color.fromARGB(255, 121, 8, 14),
+              ),
+            ),
+            Text("SalesApp"),
+            Row(children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  color: Color.fromARGB(255, 121, 8, 14),
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.notifications,
+                  color: Color.fromARGB(255, 121, 8, 14),
+                ),
+              ),
+            ])
+          ],
+        ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: HomeBody(),
+      bottomNavigationBar: BottomNavigator(),
     );
   }
 }

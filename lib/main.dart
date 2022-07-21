@@ -13,24 +13,24 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      initialRoute: Routes.LOGIN,
+      initialRoute: Routes.HOME,
       getPages: AppPages.routes,
     );
-    //   return FutureBuilder(
-    //       future: Future.delayed(
-    //         const Duration(seconds: 3),
-    //       ),
-    //       builder: (context, snapshot) {
-    //         if (snapshot.connectionState == ConnectionState.waiting) {
-    //           return SplashScreen();
-    //         } else {
-    //           return GetMaterialApp(
-    //             debugShowCheckedModeBanner: false,
-    //             title: "Application",
-    //             initialRoute: Routes.LOGIN,
-    //             getPages: AppPages.routes,
-    //           );
-    //         }
-    //       });
+    return FutureBuilder(
+        future: Future.delayed(
+          const Duration(seconds: 3),
+        ),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return SplashScreen();
+          } else {
+            return GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: "Application",
+              initialRoute: Routes.LOGIN,
+              getPages: AppPages.routes,
+            );
+          }
+        });
   }
 }

@@ -20,24 +20,28 @@ class LoginView extends GetView<LoginController> {
                 "assets/images/logo.png",
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             TextField(
+              enableSuggestions: false,
+              autocorrect: false,
               decoration: InputDecoration(
                 labelText: "Username",
                 hintText: "Cth : ramdhaniit",
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
               decoration: InputDecoration(
                 labelText: "Password",
                 hintText: "",
                 border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.all(8),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {},
               child: Text(
