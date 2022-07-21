@@ -47,23 +47,36 @@ class HomeProfile extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              const Text(
-                "Ilham Ramdhani",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Ilham Ramdhani",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const Text(
+                    "ramdhaniit@gmail.com",
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 15,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
-              const Text(
-                "ramdhaniit@gmail.com",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey,
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.settings,
+                  size: 20,
+                  color: Colors.grey[800],
                 ),
-              ),
+              )
             ],
           ),
         ),

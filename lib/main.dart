@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.VISIT,
       getPages: AppPages.routes,
     );
     return FutureBuilder(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Application",
-              initialRoute: Routes.LOGIN,
+              initialRoute: Routes.HOME,
               getPages: AppPages.routes,
             );
           }
