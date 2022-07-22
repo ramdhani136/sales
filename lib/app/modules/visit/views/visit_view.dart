@@ -132,7 +132,7 @@ class VisitBody extends StatelessWidget {
                 children: [
                   Container(
                     width: Get.width,
-                    height: 180,
+                    height: 185,
                     margin: EdgeInsets.only(
                       bottom: 15,
                     ),
