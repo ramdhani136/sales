@@ -30,13 +30,21 @@ class VisitBody extends GetView<VisitController> {
 
               if (snap.data?.length == 0) {
                 return Center(
-                  child: Text("No Data"),
+                  child: Text(
+                    "Please check your connection!",
+                    style: TextStyle(
+                      color: Colors.grey[400],
+                      fontSize: 16,
+                    ),
+                  ),
                 );
               } else {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFormField(
+                      // controller: controller.searchC,
+                      autocorrect: false,
                       decoration: InputDecoration(
                         hintText: "Search",
                         border: OutlineInputBorder(
@@ -165,6 +173,7 @@ class VisitBody extends GetView<VisitController> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
+                                                //  "${controller.searchC.value}",
                                                 "${snap.data?[index].name}",
                                                 style: TextStyle(
                                                   color: colorHeaderFont,

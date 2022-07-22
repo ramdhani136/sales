@@ -10,12 +10,12 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Application",
-      initialRoute: Routes.VISIT,
-      getPages: AppPages.routes,
-    );
+    // return GetMaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   title: "Application",
+    //   initialRoute: Routes.VISIT,
+    //   getPages: AppPages.routes,
+    // );
     return FutureBuilder(
         future: Future.delayed(
           const Duration(seconds: 3),

@@ -5,12 +5,15 @@ import 'package:sales/app/data/providers/visits_provider.dart';
 class VisitController extends GetxController {
   VisitsProvider visitProf = VisitsProvider();
 
+  // late TextEditingController searchC;
+
   Future<List<Visits>> getAllVisit() async {
     return await visitProf.getAllVisit();
   }
 
   @override
   void onInit() {
+    // searchC = TextEditingController();
     super.onInit();
   }
 
@@ -21,6 +24,7 @@ class VisitController extends GetxController {
 
   @override
   void onClose() {
+    // searchC.dispose();
     super.onClose();
   }
 }
