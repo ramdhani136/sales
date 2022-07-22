@@ -60,7 +60,7 @@ class VisitView extends GetView<VisitController> {
                   color: Color.fromARGB(255, 121, 8, 14),
                 ),
               ),
-              Text("Visits"),
+              Text("Visit List"),
               Row(children: [
                 IconButton(
                   onPressed: () {},
@@ -104,7 +104,7 @@ class VisitView extends GetView<VisitController> {
             VisitBody(
               Color(0xFF657187),
               "Canceled",
-              Colors.white,
+              Color.fromARGB(255, 230, 230, 230),
             ),
           ],
         ),
@@ -142,40 +142,134 @@ class VisitBody extends StatelessWidget {
                           Border.all(color: Color.fromARGB(255, 230, 228, 228)),
                       color: Colors.white,
                     ),
-                  ),
-                  Container(
-                    width: Get.width,
-                    height: 40,
-                    margin: EdgeInsets.only(
-                      bottom: 15,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                      color: colorHeader,
-                    ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          SizedBox(height: 48),
                           Text(
-                            "VSN20220700001",
+                            "KARYA ABADI FURNITURE",
                             style: TextStyle(
-                              color: colorHeaderFont,
+                              fontWeight: FontWeight.bold,
                               fontSize: 17,
                             ),
                           ),
+                          SizedBox(height: 5),
                           Text(
-                            "$status",
+                            "Jl. Pahlawan No 21 Sentul City Bogor Selatan , Desa Sanja , Jawa Barat ",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13),
+                              fontSize: 14,
+                              color: Colors.grey[700],
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "Group : Area 1",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: -0,
+                    child: Container(
+                      width: Get.width - 40,
+                      height: 40,
+                      margin: EdgeInsets.only(
+                        bottom: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                        color: colorHeader,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "VSN20220700001",
+                              style: TextStyle(
+                                color: colorHeaderFont,
+                                fontSize: 16.5,
+                              ),
+                            ),
+                            Text(
+                              "$status",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      width: Get.width - 40,
+                      height: 40,
+                      margin: EdgeInsets.only(
+                        bottom: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        color: Colors.white,
+                        border: Border.all(
+                            color: Color.fromARGB(255, 230, 228, 228)),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Ilham Ramdhani",
+                              style: TextStyle(
+                                color: Colors.grey[800],
+                                fontSize: 15.5,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 2.5,
+                                  ),
+                                  child: Icon(
+                                    Icons.date_range_outlined,
+                                    size: 14,
+                                    color: Colors.grey[500],
+                                  ),
+                                ),
+                                Text(
+                                  "27 Juli 2022 | 14:92",
+                                  style: TextStyle(
+                                    color: Colors.grey[500],
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12.5,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
