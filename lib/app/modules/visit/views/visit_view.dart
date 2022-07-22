@@ -63,7 +63,10 @@ class VisitView extends GetView<VisitController> {
                   color: Color.fromARGB(255, 121, 8, 14),
                 ),
               ),
-              Text("Visit List"),
+              Text(
+                "Visit List",
+                style: TextStyle(fontSize: 18),
+              ),
               Row(children: [
                 IconButton(
                   onPressed: () {},

@@ -33,7 +33,7 @@ class VisitBody extends GetView<VisitController> {
                   child: Text(
                     "Please check your connection!",
                     style: TextStyle(
-                      color: Colors.grey[400],
+                      color: Colors.grey[300],
                       fontSize: 16,
                     ),
                   ),
@@ -43,7 +43,7 @@ class VisitBody extends GetView<VisitController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFormField(
-                      // controller: controller.searchC,
+                      controller: controller.searchC,
                       autocorrect: false,
                       decoration: InputDecoration(
                         hintText: "Search",
@@ -173,7 +173,6 @@ class VisitBody extends GetView<VisitController> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                //  "${controller.searchC.value}",
                                                 "${snap.data?[index].name}",
                                                 style: TextStyle(
                                                   color: colorHeaderFont,

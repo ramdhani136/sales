@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:sales/app/data/models/visits_model.dart';
 import 'package:sales/app/data/providers/visits_provider.dart';
+import 'package:flutter/material.dart';
 
 class VisitController extends GetxController {
   VisitsProvider visitProf = VisitsProvider();
 
-  // late TextEditingController searchC;
+  late TextEditingController searchC;
 
   Future<List<Visits>> getAllVisit() async {
     return await visitProf.getAllVisit();
@@ -13,7 +14,7 @@ class VisitController extends GetxController {
 
   @override
   void onInit() {
-    // searchC = TextEditingController();
+    searchC = TextEditingController();
     super.onInit();
   }
 
@@ -24,7 +25,7 @@ class VisitController extends GetxController {
 
   @override
   void onClose() {
-    // searchC.dispose();
+    searchC.dispose();
     super.onClose();
   }
 }
