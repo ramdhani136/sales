@@ -143,161 +143,181 @@ class VisitBody extends GetView<VisitController> {
                   child: Text("No Data"),
                 );
               } else {
-                return ListView.builder(
-                  itemCount: snap.data?.length,
-                  itemBuilder: (context, index) => Stack(
-                    children: [
-                      Container(
-                        width: Get.width,
-                        height: 185,
-                        margin: EdgeInsets.only(
-                          bottom: 15,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                              color: Color.fromARGB(255, 230, 228, 228)),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 48),
-                              Text(
-                                "${snap.data?[index].customer?.name}",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                snap.data?[index].address != null &&
-                                        snap.data?[index].address != ""
-                                    ? "${snap.data?[index].address}"
-                                    : "No address yet",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey[700],
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                "Group : ${snap.data?[index].customer?.customergroup?.name}",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey[800],
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        border: const OutlineInputBorder(),
                       ),
-                      Positioned(
-                        top: -0,
-                        child: Container(
-                          width: Get.width - 40,
-                          height: 40,
-                          margin: EdgeInsets.only(
-                            bottom: 15,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
-                            ),
-                            color: colorHeader,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "${snap.data?[index].name}",
-                                  style: TextStyle(
-                                    color: colorHeaderFont,
-                                    fontSize: 16.5,
-                                  ),
-                                ),
-                                Text(
-                                  "$status",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          width: Get.width - 40,
-                          height: 40,
-                          margin: EdgeInsets.only(
-                            bottom: 15,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
-                            color: Colors.white,
-                            border: Border.all(
-                                color: Color.fromARGB(255, 230, 228, 228)),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "${snap.data?[index].user?.name}",
-                                  style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Row(
+                    ),
+                    SizedBox(height: 20),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: snap.data?.length,
+                        itemBuilder: (context, index) => Stack(
+                          children: [
+                            Container(
+                              width: Get.width,
+                              height: 185,
+                              margin: EdgeInsets.only(
+                                bottom: 15,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                    color: Color.fromARGB(255, 230, 228, 228)),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 2.5,
-                                      ),
-                                      child: Icon(
-                                        Icons.date_range_outlined,
-                                        size: 14,
-                                        color: Colors.grey[500],
+                                    SizedBox(height: 48),
+                                    Text(
+                                      "${snap.data?[index].customer?.name}",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17,
                                       ),
                                     ),
+                                    SizedBox(height: 5),
                                     Text(
-                                      "${DateFormat.yMd().add_jm().format(
-                                            DateTime.parse(
-                                                "${snap.data?[index].createdAt}"),
-                                          )}",
+                                      snap.data?[index].address != null &&
+                                              snap.data?[index].address != ""
+                                          ? "${snap.data?[index].address}"
+                                          : "No address yet",
                                       style: TextStyle(
-                                        color: Colors.grey[500],
+                                        fontSize: 14,
+                                        color: Colors.grey[700],
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      "Group : ${snap.data?[index].customer?.customergroup?.name}",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.grey[800],
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12.5,
-                                        fontStyle: FontStyle.italic,
                                       ),
                                     ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                            Positioned(
+                              top: -0,
+                              child: Container(
+                                width: Get.width - 40,
+                                height: 40,
+                                margin: EdgeInsets.only(
+                                  bottom: 15,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
+                                  color: colorHeader,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "${snap.data?[index].name}",
+                                        style: TextStyle(
+                                          color: colorHeaderFont,
+                                          fontSize: 16.5,
+                                        ),
+                                      ),
+                                      Text(
+                                        "$status",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              child: Container(
+                                width: Get.width - 40,
+                                height: 40,
+                                margin: EdgeInsets.only(
+                                  bottom: 15,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                  color: Colors.white,
+                                  border: Border.all(
+                                      color:
+                                          Color.fromARGB(255, 230, 228, 228)),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "${snap.data?[index].user?.name}",
+                                        style: TextStyle(
+                                          color: Colors.grey[800],
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 2.5,
+                                            ),
+                                            child: Icon(
+                                              Icons.date_range_outlined,
+                                              size: 14,
+                                              color: Colors.grey[500],
+                                            ),
+                                          ),
+                                          Text(
+                                            "${DateFormat.yMd().add_jm().format(
+                                                  DateTime.parse(
+                                                      "${snap.data?[index].createdAt}"),
+                                                )}",
+                                            style: TextStyle(
+                                              color: Colors.grey[500],
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12.5,
+                                              fontStyle: FontStyle.italic,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 );
               }
             }),
