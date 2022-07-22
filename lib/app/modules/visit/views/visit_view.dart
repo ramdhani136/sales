@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sales/app/data/models/visits_model.dart';
 import 'package:sales/widgets/bottom_navigator.dart';
 
 import '../controllers/visit_controller.dart';
@@ -114,7 +115,7 @@ class VisitView extends GetView<VisitController> {
   }
 }
 
-class VisitBody extends StatelessWidget {
+class VisitBody extends GetView<VisitController> {
   late Color colorHeader;
   late Color colorHeaderFont;
   late String status;
@@ -125,157 +126,181 @@ class VisitBody extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-        child: ListView.builder(
-            itemCount: 3,
-            itemBuilder: (context, index) {
-              return Stack(
-                children: [
-                  Container(
-                    width: Get.width,
-                    height: 185,
-                    margin: EdgeInsets.only(
-                      bottom: 15,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border:
-                          Border.all(color: Color.fromARGB(255, 230, 228, 228)),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 48),
-                          Text(
-                            "KARYA ABADI FURNITURE",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            "Jl. Pahlawan No 21 Sentul City Bogor Selatan , Desa Sanja , Jawa Barat ",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            "Group : Area 1",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+        child: FutureBuilder<List<Visits>>(
+            future: controller.getAllVisit(),
+            builder: (context, snap) {
+              if (snap.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Color(0xFFE6212A),
                   ),
-                  Positioned(
-                    top: -0,
-                    child: Container(
-                      width: Get.width - 40,
-                      height: 40,
-                      margin: EdgeInsets.only(
-                        bottom: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                        color: colorHeader,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "VSN20220700001",
-                              style: TextStyle(
-                                color: colorHeaderFont,
-                                fontSize: 16.5,
-                              ),
-                            ),
-                            Text(
-                              "$status",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                );
+              }
+
+              if (snap.data?.length == 0) {
+                return Center(
+                  child: Text("No Data"),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: snap.data?.length,
+                  itemBuilder: (context, index) => ListTile(
+                    title: Text("${snap.data?[index].name}"),
                   ),
-                  Positioned(
-                    bottom: 0,
-                    child: Container(
-                      width: Get.width - 40,
-                      height: 40,
-                      margin: EdgeInsets.only(
-                        bottom: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        color: Colors.white,
-                        border: Border.all(
-                            color: Color.fromARGB(255, 230, 228, 228)),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Ilham Ramdhani",
-                              style: TextStyle(
-                                color: Colors.grey[800],
-                                fontSize: 15.5,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 2.5,
-                                  ),
-                                  child: Icon(
-                                    Icons.date_range_outlined,
-                                    size: 14,
-                                    color: Colors.grey[500],
-                                  ),
-                                ),
-                                Text(
-                                  "27 Juli 2022 | 14:92",
-                                  style: TextStyle(
-                                    color: Colors.grey[500],
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12.5,
-                                    fontStyle: FontStyle.italic,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              );
+                );
+              }
             }),
+        // child: ListView.builder(
+        //     itemCount: 3,
+        //     itemBuilder: (context, index) {
+        //       return Stack(
+        //         children: [
+        //           Container(
+        //             width: Get.width,
+        //             height: 185,
+        //             margin: EdgeInsets.only(
+        //               bottom: 15,
+        //             ),
+        //             decoration: BoxDecoration(
+        //               borderRadius: BorderRadius.circular(20),
+        //               border:
+        //                   Border.all(color: Color.fromARGB(255, 230, 228, 228)),
+        //               color: Colors.white,
+        //             ),
+        //             child: Padding(
+        //               padding: const EdgeInsets.symmetric(horizontal: 15),
+        //               child: Column(
+        //                 crossAxisAlignment: CrossAxisAlignment.start,
+        //                 children: [
+        //                   SizedBox(height: 48),
+        //                   Text(
+        //                     "KARYA ABADI FURNITURE",
+        //                     style: TextStyle(
+        //                       fontWeight: FontWeight.bold,
+        //                       fontSize: 17,
+        //                     ),
+        //                   ),
+        //                   SizedBox(height: 5),
+        //                   Text(
+        //                     "Jl. Pahlawan No 21 Sentul City Bogor Selatan , Desa Sanja , Jawa Barat ",
+        //                     style: TextStyle(
+        //                       fontSize: 14,
+        //                       color: Colors.grey[700],
+        //                     ),
+        //                   ),
+        //                   SizedBox(height: 5),
+        //                   Text(
+        //                     "Group : Area 1",
+        //                     style: TextStyle(
+        //                       fontSize: 16,
+        //                       color: Colors.grey[800],
+        //                       fontWeight: FontWeight.bold,
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //           ),
+        //           Positioned(
+        //             top: -0,
+        //             child: Container(
+        //               width: Get.width - 40,
+        //               height: 40,
+        //               margin: EdgeInsets.only(
+        //                 bottom: 15,
+        //               ),
+        //               decoration: BoxDecoration(
+        //                 borderRadius: BorderRadius.only(
+        //                   topLeft: Radius.circular(20),
+        //                   topRight: Radius.circular(20),
+        //                 ),
+        //                 color: colorHeader,
+        //               ),
+        //               child: Padding(
+        //                 padding: const EdgeInsets.symmetric(horizontal: 15),
+        //                 child: Row(
+        //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //                   children: [
+        //                     Text(
+        //                       "VSN20220700001",
+        //                       style: TextStyle(
+        //                         color: colorHeaderFont,
+        //                         fontSize: 16.5,
+        //                       ),
+        //                     ),
+        //                     Text(
+        //                       "$status",
+        //                       style: TextStyle(
+        //                           color: Colors.white,
+        //                           fontWeight: FontWeight.bold,
+        //                           fontSize: 13),
+        //                     ),
+        //                   ],
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //           Positioned(
+        //             bottom: 0,
+        //             child: Container(
+        //               width: Get.width - 40,
+        //               height: 40,
+        //               margin: EdgeInsets.only(
+        //                 bottom: 15,
+        //               ),
+        //               decoration: BoxDecoration(
+        //                 borderRadius: BorderRadius.only(
+        //                   bottomLeft: Radius.circular(20),
+        //                   bottomRight: Radius.circular(20),
+        //                 ),
+        //                 color: Colors.white,
+        //                 border: Border.all(
+        //                     color: Color.fromARGB(255, 230, 228, 228)),
+        //               ),
+        //               child: Padding(
+        //                 padding: const EdgeInsets.symmetric(horizontal: 15),
+        //                 child: Row(
+        //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //                   children: [
+        //                     Text(
+        //                       "Ilham Ramdhani",
+        //                       style: TextStyle(
+        //                         color: Colors.grey[800],
+        //                         fontSize: 15.5,
+        //                         fontWeight: FontWeight.bold,
+        //                       ),
+        //                     ),
+        //                     Row(
+        //                       children: [
+        //                         Padding(
+        //                           padding: const EdgeInsets.symmetric(
+        //                             horizontal: 2.5,
+        //                           ),
+        //                           child: Icon(
+        //                             Icons.date_range_outlined,
+        //                             size: 14,
+        //                             color: Colors.grey[500],
+        //                           ),
+        //                         ),
+        //                         Text(
+        //                           "27 Juli 2022 | 14:92",
+        //                           style: TextStyle(
+        //                             color: Colors.grey[500],
+        //                             fontWeight: FontWeight.bold,
+        //                             fontSize: 12.5,
+        //                             fontStyle: FontStyle.italic,
+        //                           ),
+        //                         ),
+        //                       ],
+        //                     ),
+        //                   ],
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ],
+        //       );
+        //     }),
       ),
     );
   }

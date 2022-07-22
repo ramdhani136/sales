@@ -1,0 +1,49 @@
+{
+"id": 50,
+"name": "VST20220700004",
+"id_customer": 3,
+"address": null,
+"pic": "Juna",
+"phone": "0857263523",
+"priceNote": null,
+"remindOrderNote": null,
+"billingNote": null,
+"compInformNote": null,
+"img": "VST20220700001.jpg",
+"signature": null,
+"lat": null,
+"lng": null,
+"id_user": 3,
+"rating": null,
+"surveyNote": null,
+"id_branch": 1,
+"surveyAt": null,
+"isSurvey": false,
+"status": 2,
+"createdAt": "2022-07-14T15:02:20.000Z",
+"updatedAt": "2022-07-14T15:02:20.000Z",
+"user": {
+"id": 3,
+"name": "Ryan Hadi Dermawan",
+"username": "ryan",
+"email": null,
+"phone": null
+},
+"branch": {
+"id": 1,
+"name": "PT. Ekatunggal Tunas Mandiri"
+},
+"customer": {
+"id": 3,
+"name": "PT. Masa Bodo",
+"type": "Company",
+"id_customerGroup": 2,
+"status": true,
+"customergroup": {
+"id": 2,
+"name": "Area 2",
+"deskripsi": null,
+"status": true
+}
+}
+}

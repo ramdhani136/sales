@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
+import 'package:sales/app/data/models/visits_model.dart';
+import 'package:sales/app/data/providers/visits_provider.dart';
 
 class VisitController extends GetxController {
-  //TODO: Implement VisitController
+  VisitsProvider visitProf = VisitsProvider();
 
-  final count = 0.obs;
+  Future<List<Visits>> getAllVisit() async {
+    return await visitProf.getAllVisit();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +23,4 @@ class VisitController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
