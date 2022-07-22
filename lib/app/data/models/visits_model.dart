@@ -19,7 +19,7 @@ class Visits {
   int? idBranch;
   dynamic surveyAt;
   bool? isSurvey;
-  bool? status;
+  String? status;
   String? createdAt;
   String? updatedAt;
   User? user;
