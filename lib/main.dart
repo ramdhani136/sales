@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      initialRoute: Routes.VISIT,
+      initialRoute: Routes.LOGIN,
       getPages: AppPages.routes,
     );
+
     return FutureBuilder(
         future: Future.delayed(
           const Duration(seconds: 3),

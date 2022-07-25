@@ -1,9 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  late String _IdToken;
+  TextEditingController usernameC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
 
-  final count = 0.obs;
+  bool get isAuth {
+    return token != null;
+  }
+
+  String? get token {
+    if (_IdToken != null) {
+      return _IdToken;
+    } else {
+      return null;
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -16,8 +30,8 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
+    usernameC.dispose();
+    passwordC.dispose();
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
