@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:sales/app/data/models/visits_model.dart';
 import 'package:sales/app/modules/visit/controllers/visit_controller.dart';
 import 'package:sales/widgets/bottom_navigator.dart';
+import 'package:sales/widgets/rating.dart';
 
 class VisitBody extends GetView<VisitController> {
   late Color colorHeader;
@@ -90,13 +91,13 @@ class VisitBody extends GetView<VisitController> {
                             if (snap.data?[index].status == isPage) {
                               return InkWell(
                                 onTap: () {
-                                  print("${snap.data?[index].id}");
+                                  print("${snap.data![index].id}");
                                 },
                                 child: Stack(
                                   children: [
                                     Container(
                                       width: Get.width,
-                                      height: 185,
+                                      height: 230,
                                       margin: EdgeInsets.only(
                                         bottom: 15,
                                       ),
@@ -144,6 +145,20 @@ class VisitBody extends GetView<VisitController> {
                                                 fontSize: 16,
                                                 color: Colors.grey[800],
                                                 fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(height: 10),
+                                            Flexible(
+                                              // color: Colors.amber,
+                                              // height: MediaQuery.of(context)
+                                              //     .size
+                                              //     .height,
+                                              // width: MediaQuery.of(context)
+                                              //     .size
+                                              //     .width,
+                                              child: Rating(
+                                                (snap.data?[index].rating)
+                                                    .toDouble(),
                                               ),
                                             ),
                                           ],

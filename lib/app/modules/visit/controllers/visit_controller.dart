@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class VisitController extends GetxController {
   VisitsProvider visitProf = VisitsProvider();
 
-  late TextEditingController searchC;
+  TextEditingController searchC = TextEditingController();
 
   Future<List<Visits>> getAllVisit() async {
     return await visitProf.getAllVisit();
@@ -14,7 +14,6 @@ class VisitController extends GetxController {
 
   @override
   void onInit() {
-    searchC = TextEditingController();
     super.onInit();
   }
 

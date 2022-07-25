@@ -21,7 +21,7 @@ class VisitView extends GetView<VisitController> {
             "ACTIVE",
             style: TextStyle(
               fontSize: 13,
-              color: Color.fromARGB(255, 95, 95, 95),
+              color: Color.fromARGB(255, 75, 75, 75),
             ),
           ),
         ),
@@ -30,7 +30,7 @@ class VisitView extends GetView<VisitController> {
             "COMPLETED",
             style: TextStyle(
               fontSize: 13,
-              color: Color.fromARGB(255, 95, 95, 95),
+              color: Color.fromARGB(255, 75, 75, 75),
             ),
           ),
         ),
@@ -39,7 +39,7 @@ class VisitView extends GetView<VisitController> {
             "CANCELED",
             style: TextStyle(
               fontSize: 13,
-              color: Color.fromARGB(255, 95, 95, 95),
+              color: Color.fromARGB(255, 75, 75, 75),
             ),
           ),
         ),

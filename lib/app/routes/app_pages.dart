@@ -4,6 +4,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/test/bindings/test_binding.dart';
+import '../modules/test/views/test_view.dart';
 import '../modules/visit/bindings/visit_binding.dart';
 import '../modules/visit/views/visit_view.dart';
 
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.VISIT,
       page: () => const VisitView(),
       binding: VisitBinding(),
+    ),
+    GetPage(
+      name: _Paths.TEST,
+      page: () => const TestView(),
+      binding: TestBinding(),
     ),
   ];
 }
